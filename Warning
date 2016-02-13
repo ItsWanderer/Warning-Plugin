@@ -1,0 +1,32 @@
+package net.Pixelors.warn;
+ 
+import org.bukkit.command.CommandExecutor;
+import org.bukkit.plugin.java.JavaPlugin;
+ 
+public class Warnings extends JavaPlugin{
+        private WarnCommand warnCommand;
+ 
+        public void onEnable() {
+                loadConfig();
+                System.out.println("Warn> The plugin has been enabled!");
+                warnCommand = new WarnCommand(this);
+                registerCommands();
+ 
+                
+        }
+       
+ 
+       
+       
+        private void loadConfig() {
+               
+        }
+       
+        private void registerCommands() {
+               
+                this.getCommand("warn").setExecutor((CommandExecutor)warnCommand);
+        }
+ 
+ 
+ 
+}
