@@ -25,12 +25,19 @@ public class WarnCommand implements CommandExecutor{
 	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
 		if(sender instanceof Player) {
 		Player p = (Player) sender;
-		if(p.hasPermission("helper")) {
+		if(p.hasPermission("warn.see.warning")) {
 			
-		if(cmd.getName().equalsIgnoreCase("warn")) {
+		if(cmd.getName().equalsIgnoreCase("mywarnings")) {
 		if(args.length == 0) {
 			int warns = plugin.getConfig().getInt("warns." + p.getName());
 		p.sendMessage("§4§lWarn> §7You have got " + warns + " §7warns!");
+		}
+			if(p.hasPermission("warn.issue.warning"){
+			if(cmd.getName().equalsIgnoreCase("warn"){
+				if(args.length == 0) {
+					p.sendMessage("§4§lWarn> §a/warn <player> <reason>");
+				
+				
 		
 		} else if(args.length == 1) {
 			p.sendMessage("§4§lWarn> §7Please provide a warning reason!");
@@ -70,7 +77,8 @@ public class WarnCommand implements CommandExecutor{
 					target.kickPlayer("§4§lWarn> §7You have been banned! §eReason: \n"
 					+ msg
 					+ "§7If you feel you have been punished wrong please appeal at pixelors.net ");
-					p.sendMessage("§4§lWarn> §7You warned §e" + target.getName() + "§7!");
+					
+					p.sendMessage("§4§lWarn> §7You warned §e" + target.getName() + "§7! Because the player had 2 warns already the player got banned!");
 				}
 				
 			}else{
@@ -84,8 +92,8 @@ public class WarnCommand implements CommandExecutor{
 			}
 		
 		} else {
-			if(!p.hasPermission("helper")) {
-				p.sendMessage("§4§lWarn> §7This requires rank [§2HELPER§7]");
+			if(!p.hasPermission("warn.issue.warning")) {
+				p.sendMessage("§4§lWarn> §7This requires Network-Rank [§6§lMOD§7]");
 			}
 			
 		}
